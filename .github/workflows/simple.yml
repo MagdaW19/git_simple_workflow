@@ -19,4 +19,18 @@ jobs:
           print('Some python command')
           print('I can use python in workflow')
         shell: python
+      - name: define a variable
+        run: |
+          message = "I am a variable in a first job"
+        shell: python
+  run-python-command:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: define a variable
+        run: |
+          message = "I am a variable in a first job"
+      - name: print a variable
+        run: |
+          print(message)
+        shell: python
 
