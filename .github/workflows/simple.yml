@@ -29,6 +29,7 @@ jobs:
       - name: define a variable
         run: |
           message = "I am a variable in a first job"
+        shell: python
       - name: print a variable
         run: |
           print(message)
