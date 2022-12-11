@@ -26,12 +26,14 @@ jobs:
   run-python-command:
     runs-on: ubuntu-latest
     steps: 
-      - name: define a variable
+      - name: save text to file
         run: |
-          message = "I am a variable in a first job"
-        shell: python
+          echo "I am a content of a file in a second job" >> message.txt
+        shell: bash
       - name: print a variable
         run: |
-          print(message)
+          with open('message.txt') as file:
+            file_contents = f.read()
+            print(file_contents)
         shell: python
 
