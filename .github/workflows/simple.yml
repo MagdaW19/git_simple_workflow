@@ -19,14 +19,14 @@ jobs:
           print('Some python command')
           print('I can use python in workflow')
         shell: python
-      - name: save text to file
-        run: |
-          echo "I am a content of a file in a second job" >> message.txt
-        shell: bash
   run-python-command:
     runs-on: ubuntu-latest
     needs: "run-shell-command"
     steps: 
+      - name: save text to file
+        run: |
+          echo "I am a content of a file in a second job" >> message.txt
+        shell: bash
       - name: print a text file
         run: |
           with open('message.txt') as file:
