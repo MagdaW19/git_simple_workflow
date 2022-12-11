@@ -14,4 +14,9 @@ jobs:
           npm -v
       - name: show info
         run: echo "I run step in the github actions workflow"
+      - name: python commands
+        run: |
+          print('Some python command')
+          print('I can use python in workflow')
+        shell: python
 
