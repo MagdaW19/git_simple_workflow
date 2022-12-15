@@ -1,0 +1,25 @@
+name: "Clean ipynb files"
+
+on:
+  pull_request
+
+jobs:
+  run-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout ppt
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: clear metadata in ipynb files
+        run: |
+          python clean_ipynb_files.py
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - name: commit cleared ipynb files and push to ppt
+        run: |
+          git add --all
+          git commit -m "clear ipynb metadata"
+          git push
