@@ -1,8 +1,9 @@
 name: "Clean ipynb files"
 
 on:
-  pull_request
-
+  pull_request:
+    branches:
+      - none
 jobs:
   run-checkout:
     runs-on: ubuntu-latest
@@ -21,5 +22,7 @@ jobs:
       - name: commit cleared ipynb files and push to ppt
         run: |
           git add --all
-          git commit -m "clear ipynb metadata" --allow-empty
-          git push
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "clear ipynb metadata"
+            git push origin main
+          fi
