@@ -19,9 +19,7 @@ jobs:
           ls
       - name: clear metadata in ipynb files
         run: |
-          print('something')
-          import utilities
-        shell: python
+          python utilities.py
       - name: merge ppt into master
         run: |
           git branch
