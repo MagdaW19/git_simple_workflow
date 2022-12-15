@@ -16,8 +16,9 @@ jobs:
       - name: check git branches
         run: |
           git branch
-          git fetch -p 
-          git branch
+          git checkout master
+          git merge ppt 
+          gut push
 
 
       
