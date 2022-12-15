@@ -1,0 +1,19 @@
+name: "Deploy ppt to master"
+
+on:
+  push:
+    branches:
+      - ppt
+
+jobs:
+  run-test-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: display info
+        run: |
+          git branch 
+          pwd 
+          ls --all
+        shell: bash
+          
+      
