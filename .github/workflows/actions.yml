@@ -14,5 +14,11 @@ jobs:
           pwd 
           ls --all
         shell: bash
-          
+      - name: simple action
+        id: greet
+        uses: actions/hello-world-javascript-action@v1.2
+        with: 
+          who-to-greet: Magda
+      - name: log greeting time
+        run: echo "${{steps.greet.outputs.time}}"
       
