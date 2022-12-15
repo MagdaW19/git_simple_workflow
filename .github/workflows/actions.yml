@@ -16,9 +16,12 @@ jobs:
         shell: bash
       - name: checkout repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: list files after checkout
         run: |
           pwd 
           ls --all
+          git branch
 
       
