@@ -9,18 +9,16 @@ jobs:
   run-checkout:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: checkout and merge ppt to master
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: checkout and merge ppt to master
-        run: 
+          run: 
             git fetch -p
             git branch
             git checkout master
             git merge ppt 
             git push
-        shell: bash
 
 
       
