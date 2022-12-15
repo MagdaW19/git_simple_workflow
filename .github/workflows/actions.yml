@@ -23,6 +23,6 @@ jobs:
           pwd 
           ls --all
           git branch
-          git merge ppt master
+          git merge origin/ppt origin/master
 
       
