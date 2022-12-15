@@ -9,23 +9,16 @@ jobs:
   run-checkout:
     runs-on: ubuntu-latest
     steps:
-      - name: list files
-        run: |
-          pwd 
-          ls --all
-        shell: bash
-      - name: checkout repo
+      - name: checkout and merge ppt to master
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: list files after checkout
-        run: |
-          pwd 
-          ls --all
-          git pull origin master
-          git branch
-          git checkout master
-          git branch
-          git merge ppt
+          run: 
+            git fetch -p
+            git branch
+            git checkout master
+            git merge ppt 
+            git push
+
 
       
