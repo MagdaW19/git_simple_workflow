@@ -22,7 +22,10 @@ jobs:
         run: |
           pwd 
           ls --all
+          git pull origin master
           git branch
-          git merge origin/ppt origin/master
+          git checkout master
+          git branch
+          git merge ppt
 
       
