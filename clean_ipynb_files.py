@@ -1,6 +1,8 @@
+# imports
 import os
 import json
 
+# define functions
 def get_files_with_extension(extension='.ipynb'):
     """Get list of paths for files in current directory (recursively) with given extension    """
     files_list = []
@@ -23,3 +25,7 @@ def clear_notebook_metadata(file_path):
         data = json.load(f)
         data['cells'] = [clear_cell_ipynb(cell) for cell in data['cells']]
         json.dump(data, open(file_path, "w"), indent = 4)
+
+# clear all ipynb files in place
+for file in get_files_with_extension():
+    clear_notebook_metadata(file)

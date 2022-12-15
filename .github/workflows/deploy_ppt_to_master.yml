@@ -19,7 +19,7 @@ jobs:
           ls
       - name: clear metadata in ipynb files
         run: |
-          python utilities.py
+          python clean_ipynb_files.py
       - name: merge ppt into master
         run: |
           git branch
