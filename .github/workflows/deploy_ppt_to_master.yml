@@ -3,7 +3,7 @@ name: "Deploy ppt to master"
 on:
   push:
     branches:
-      - ppt
+      - none
 
 jobs:
   run-checkout:
