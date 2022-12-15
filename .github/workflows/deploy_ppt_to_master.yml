@@ -18,7 +18,7 @@ jobs:
           python clean_ipynb_files.py
       - name: commit cleared ipynb files and push to ppt
         run: |
-          git add --all
+          git add .
           git commit -m "clear ipynb metadata"
           git push
       - name: merge ppt into master
