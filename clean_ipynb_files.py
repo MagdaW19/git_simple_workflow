@@ -24,6 +24,7 @@ def clear_notebook_metadata(file_path):
     with open(file_path,"r") as f:
         data = json.load(f)
         data['cells'] = [clear_cell_ipynb(cell) for cell in data['cells']]
+        data['metadata']={}
         json.dump(data, open(file_path, "w"), indent = 4)
 
 # clear all ipynb files in place
