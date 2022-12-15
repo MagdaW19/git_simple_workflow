@@ -1,7 +1,9 @@
 name: "Clean ipynb files"
 
 on:
-  pull_request
+  pull_request:
+    branches:
+      - none
 jobs:
   run-checkout:
     runs-on: ubuntu-latest
