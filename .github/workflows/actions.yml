@@ -6,19 +6,19 @@ on:
       - ppt
 
 jobs:
-  run-test-command:
+  run-checkout:
     runs-on: ubuntu-latest
     steps:
-      - name: display info
+      - name: list files
         run: |
           pwd 
           ls --all
         shell: bash
-      - name: simple action
-        id: greet
-        uses: actions/hello-world-javascript-action@v1.1
-        with: 
-          who-to-greet: Magda
-      - name: log greeting time
-        run: echo "${{steps.greet.outputs.time}}"
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: list files after checkout
+        run: |
+          pwd 
+          ls --all
+
       
