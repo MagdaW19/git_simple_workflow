@@ -16,7 +16,7 @@ jobs:
         shell: bash
       - name: simple action
         id: greet
-        uses: actions/hello-world-javascript-action@v1.2
+        uses: actions/hello-world-javascript-action@v1.1
         with: 
           who-to-greet: Magda
       - name: log greeting time
