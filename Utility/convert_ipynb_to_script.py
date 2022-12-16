@@ -19,8 +19,9 @@ def extract_cell_text(cell):
     text = ''
     if cell["cell_type"] == "code":
         text += ''.join(cell["source"])
+        text += '\n'
     elif cell["cell_type"] == "markdown":
-        text += ''.join(cell["source"])
+        text += '#' + ''.join(cell["source"]).replace('#', '').replace('\n', '\n#')
     return text
 
 
@@ -28,10 +29,7 @@ def convert_ipynb_to_py(file_path):
     """ Convert ipynb content to py script"""
     with open(file_path, "r") as file:
         ipynb_data = json.load(file)
-        script = ''
-        for i, cell in enumerate(ipynb_data['cells']):
-            script += f'In[{i+1}]:\n'
-            script += extract_cell_text(cell) + '\n\n'
+        script = '\n\n'.join([f'# In[{i+1}]:\n{extract_cell_text(cell)}' for i, cell in enumerate(ipynb_data['cells'])])
         return script
 
 
@@ -39,7 +37,7 @@ def main():
     """Main function that runs converting ipynb to py"""
     for input_file_path in get_files_with_extension('.ipynb'):
 
-        output_file_path = input_file_path.replace('.ipynb', '.py')
+        output_file_path = input_file_path.replace('.ipynb', '.py').replace('Notebook', 'Script')
         script = convert_ipynb_to_py(input_file_path)
 
         with open(output_file_path, 'w') as file:
