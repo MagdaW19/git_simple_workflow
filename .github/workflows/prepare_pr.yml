@@ -27,6 +27,8 @@ jobs:
         run: |
           flake8 Script
           pylint Script
+      - name: Generate Python Docs
+        uses: jbheard/markdown-docs@v1
       - name: setup git config
         run: |
           git config user.name "GitHub Actions Bot"
