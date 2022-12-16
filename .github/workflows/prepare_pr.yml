@@ -3,7 +3,7 @@ name: "Prepare Pull Request"
 on:
   push:
     branches:
-      - none
+      - '**'
 jobs:
   run-checkout:
     runs-on: ubuntu-latest
