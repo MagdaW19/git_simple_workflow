@@ -38,4 +38,9 @@ jobs:
             git commit -m "clear ipynb metadata"
             git push
           fi
+      - name: push GitHub documentation
+        uses: seanzhengw/sphinx-pages@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          create_readme: true
           
