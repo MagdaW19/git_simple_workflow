@@ -2,7 +2,6 @@
 
 
 import os
-import json
 
 
 def get_files_with_extension(extension='.ipynb'):
@@ -14,4 +13,3 @@ def get_files_with_extension(extension='.ipynb'):
                 fullpath = os.path.join(root, file)
                 files_list.append(fullpath)
     return files_list
-
