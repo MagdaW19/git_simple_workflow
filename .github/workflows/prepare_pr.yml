@@ -1,0 +1,36 @@
+name: "Prepare Pull Request"
+
+on:
+  push:
+    branches:
+      - none
+jobs:
+  run-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: clear metadata in ipynb files
+        run: |
+          python Utility/clean_ipynb_files.py
+      - name: generate scripts from notebooks
+        run: |
+          python Utility/convert_ipynb_to_script.py
+      - name: check code quality
+        run: |
+          flake8 Script
+          pylint Script
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - name: commit cleared and push cleared files
+        run: |
+          git add --all
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "clear ipynb metadata"
+            git push
+          fi
+          
