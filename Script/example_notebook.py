@@ -1,5 +1,6 @@
 # In[1]:
-# Example Notebook
+"""Notebook for loading iris dataset """
+
 
 # In[2]:
 import numpy as np
@@ -15,7 +16,3 @@ df_iris = pd.DataFrame(data=np.c_[iris['data'], iris['target']],
 
 # In[4]:
 df_iris.head(10)
-
-
-# In[5]:
-print('notebook')
