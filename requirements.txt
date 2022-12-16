@@ -1,7 +1,6 @@
 ipykernel
 numpy
 pandas
-git
 scikit-learn
 matplotlib
 seaborn
