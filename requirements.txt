@@ -6,3 +6,4 @@ matplotlib
 seaborn
 pylint
 flake8
+markupsafe==2.0.1
