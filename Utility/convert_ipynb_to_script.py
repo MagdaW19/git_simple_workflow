@@ -14,30 +14,42 @@ def get_files_with_extension(extension='.ipynb'):
     return files_list
 
 
+def deduplicate_hash(markdown):
+    """Deduplicate # symbol in markdown """
+    return markdown.replace('#', '').replace('\n', '\n#')
+
+
 def extract_cell_text(cell):
     """ Extract code from code cell """
     text = ''
     if cell["cell_type"] == "code":
         text += ''.join(cell["source"])
-        text += '\n'
     elif cell["cell_type"] == "markdown":
-        text += '#' + ''.join(cell["source"]).replace('#', '').replace('\n', '\n#')
+        text += '#'
+        text += deduplicate_hash(''.join(cell["source"]))
     return text
+
+
+def format_cell(i, cell):
+    """Format display of notebook cell"""
+    return f'# In[{i+1}]:\n{extract_cell_text(cell)}'
 
 
 def convert_ipynb_to_py(file_path):
     """ Convert ipynb content to py script"""
     with open(file_path, "r") as file:
         ipynb_data = json.load(file)
-        script = '\n\n'.join([f'# In[{i+1}]:\n{extract_cell_text(cell)}' for i, cell in enumerate(ipynb_data['cells'])])
+        enum_cells = enumerate(ipynb_data['cells'])
+        formated_cells = [format_cell(i, cell) for i, cell in enum_cells]
+        script = '\n\n\n'.join(formated_cells) + '\n'
         return script
 
 
 def main():
     """Main function that runs converting ipynb to py"""
     for input_file_path in get_files_with_extension('.ipynb'):
-
-        output_file_path = input_file_path.replace('.ipynb', '.py').replace('Notebook', 'Script')
+        new_folder_path = input_file_path.replace('Notebook', 'Script')
+        output_file_path = new_folder_path.replace('.ipynb', '.py')
         script = convert_ipynb_to_py(input_file_path)
 
         with open(output_file_path, 'w') as file:
