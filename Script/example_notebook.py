@@ -26,9 +26,8 @@ def read_sk_dataset(loaded_dataset):
     loaded_dataset : sklearn.utils._bunch.Bunch
         dataset loaded from sklearn.datasets, e.g. datasets.load_iris()
     """
-    df = pd.DataFrame(data=np.c_[loaded_dataset['data'],
-                                 loaded_dataset['target']],
-                      columns=loaded_dataset['feature_names'] + ['target'])
+    df = pd.DataFrame(data=np.c_[loaded_dataset['data'], loaded_dataset['target']],
+                          columns=loaded_dataset['feature_names'] + ['target'])
     return df
 
 
