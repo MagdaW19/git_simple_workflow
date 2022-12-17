@@ -43,4 +43,4 @@ df_iris = read_sk_dataset(new_dataset)
 
 
 # In[8]:
-# df_iris.head(10)
+df_iris.head(10)

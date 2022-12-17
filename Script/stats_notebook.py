@@ -13,8 +13,5 @@ import matplotlib.pyplot as plt
 dataset = datasets.load_iris()
 df_data = pd.DataFrame(data=np.c_[dataset['data'], dataset['target']],
                        columns=dataset['feature_names'] + ['target'])
-
-
-# In[4]:
 df_data.plot()
 plt.show()
