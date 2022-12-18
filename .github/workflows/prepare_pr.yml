@@ -55,6 +55,6 @@ jobs:
           pylint Script
       - name: run tests
         run: |
-          coverage run -m pytest
+          coverage run -m pytest Tests
           coverage report
           
