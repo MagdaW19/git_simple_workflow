@@ -10,18 +10,7 @@ from sklearn import datasets
 
 # In[3]:
 def deduplicate_hash(markdown):
-    """Remove duplicates # characters from text
-
-    Parameters
-    ----------
-    markdown : str
-       original text
-
-    Returns
-    -------
-    str
-        text with deduplicated #
-    """
+    """Deduplicate # symbol in markdown """
     return markdown.replace('#', '').replace('\n', '\n#')
 
 
